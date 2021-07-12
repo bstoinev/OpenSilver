@@ -5,7 +5,7 @@ namespace System.Windows.Browser
 	public sealed partial class HtmlDocument
 	{
 		[OpenSilver.NotImplemented]
-		public HtmlElement Body { get; private set; }
+		public HtmlElement Body { get { return new HtmlElement(); } }
 
 		[OpenSilver.NotImplemented]
 		public HtmlElement CreateElement(string tagName)
