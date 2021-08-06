@@ -115,6 +115,14 @@
 		<Compile Include="System.Windows.Media\GeometryConverter.cs" />
 		<Compile Include="System.Windows\GridLengthConverter.cs" />
 		<Compile Include="System.ComponentModel\IItemProperties.cs" />
+		<Compile Include="System.IO.IsolatedStorage\IsolatedStorageSettings.cs" />
+		<Compile Include="System.IO.IsolatedStorage\IsolatedStorageSettingsForCSharp.cs" />
+		<Compile Include="System.IO.IsolatedStorage\WORKINPROGRESS\IsolatedStorage.cs" />
+		<Compile Include="System.IO.IsolatedStorage\WORKINPROGRESS\IsolatedStorageException.cs" />
+		<Compile Include="System.IO.IsolatedStorage\WORKINPROGRESS\IsolatedStorageFile.cs" />
+		<Compile Include="System.IO.IsolatedStorage\WORKINPROGRESS\IsolatedStorageFileStream.cs" />
+		<Compile Include="System.IO.IsolatedStorage\WORKINPROGRESS\IsolatedStorageScope.cs" />
+		<Compile Include="System.IO.IsolatedStorage\WORKINPROGRESS\IsolatedStorageSecurityOptions.cs" />
 		<Compile Include="System.Windows.Media\ImageSourceConverter.cs" />
 		<Compile Include="System.Windows.Media.Animation\KeyTimeConverter.cs" />
 		<Compile Include="System.Windows.Media\MatrixConverter.cs" />
