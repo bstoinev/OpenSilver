@@ -162,6 +162,14 @@
 		<Compile Include="System.IO.IsolatedStorage\WORKINPROGRESS\IsolatedStorageFileStream.cs" />
 		<Compile Include="System.IO.IsolatedStorage\WORKINPROGRESS\IsolatedStorageScope.cs" />
 		<Compile Include="System.IO.IsolatedStorage\WORKINPROGRESS\IsolatedStorageSecurityOptions.cs" />
+		<Compile Include="System.IO.IsolatedStorage\IsolatedStorageSettings.cs" />
+		<Compile Include="System.IO.IsolatedStorage\IsolatedStorageSettingsForCSharp.cs" />
+		<Compile Include="System.IO.IsolatedStorage\WORKINPROGRESS\IsolatedStorage.cs" />
+		<Compile Include="System.IO.IsolatedStorage\WORKINPROGRESS\IsolatedStorageException.cs" />
+		<Compile Include="System.IO.IsolatedStorage\WORKINPROGRESS\IsolatedStorageFile.cs" />
+		<Compile Include="System.IO.IsolatedStorage\WORKINPROGRESS\IsolatedStorageFileStream.cs" />
+		<Compile Include="System.IO.IsolatedStorage\WORKINPROGRESS\IsolatedStorageScope.cs" />
+		<Compile Include="System.IO.IsolatedStorage\WORKINPROGRESS\IsolatedStorageSecurityOptions.cs" />
 		<Compile Include="System.Linq\WORKINPROGRESS\FunctionalProgramming.cs" />
 		<Compile Include="System.Net\DownloadStringCompletedEventArgs.cs" />
 		<Compile Include="System.Net\DownloadStringCompletedEventHandler.cs" />
