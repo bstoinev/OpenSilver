@@ -58,8 +58,9 @@ namespace Windows.UI.Xaml.Controls
         /// </summary>
         public Frame()
         {
-            this.Loaded += Frame_Loaded;
-            this.Unloaded += Frame_Unloaded;
+            Loaded += Frame_Loaded;
+            Unloaded += Frame_Unloaded;
+            DefaultStyleKey = typeof(Frame);
         }
 
         void UpdateCanGoBack()
