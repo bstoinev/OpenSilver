@@ -122,6 +122,6 @@ namespace System
         [OpenSilver.NotImplemented]
         public bool EnableAutoZoom { get; set; }
         [OpenSilver.NotImplemented]
-        public bool Windowless { get; private set; }
+        public bool Windowless { get; private set; } = true;
     }
 }
