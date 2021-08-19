@@ -143,7 +143,7 @@ namespace Windows.UI.Core
                         }
                         catch (Exception e)
                         {
-                            Console.Error.WriteLine("DEBUG: CoreDispatcher: BeginIvokeInternal: Method excution failed: " + e);
+                            Console.Error.WriteLine("DEBUG: CoreDispatcher: BeginIvokeInternal: Method execution failed: " + e);
                         }
                     }));
             }
