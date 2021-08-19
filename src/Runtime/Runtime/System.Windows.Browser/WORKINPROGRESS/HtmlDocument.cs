@@ -10,7 +10,7 @@ namespace System.Windows.Browser
 		[OpenSilver.NotImplemented]
 		public HtmlElement CreateElement(string tagName)
 		{
-			return default(HtmlElement);
+			return new HtmlElement();
 		}
 		
 		//
