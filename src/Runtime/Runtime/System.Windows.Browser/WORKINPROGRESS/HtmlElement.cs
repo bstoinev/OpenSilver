@@ -33,7 +33,7 @@ namespace System.Windows.Browser
 		[OpenSilver.NotImplemented]
         public ScriptObjectCollection Children
         {
-            get;
+            get => new ScriptObjectCollection();
         }
    
         /// <summary>
