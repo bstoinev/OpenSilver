@@ -567,6 +567,7 @@ namespace Windows.UI.Xaml.Controls
 
             object innerDiv;
             var innerDivStyle = INTERNAL_HtmlDomManager.CreateDomElementAppendItAndGetStyle("div", outerDiv, this, out innerDiv);
+            innerDivStyle.display = "contents";
             innerDivStyle.position = "relative";
 
             // Note: the "height" and "width" of the innerDiv are handled in the methods "INTERNAL_ApplyHorizontalSettings" and "INTERNAL_ApplyVerticalSettings".
