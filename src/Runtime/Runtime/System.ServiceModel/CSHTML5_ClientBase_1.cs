@@ -1233,6 +1233,9 @@ EndOperationDelegate endDelegate, SendOrPostCallback completionCallback)
                         object requestBody = requestParameters[parameterInfos[i].Name];
                         if (requestBody != null)
                         {
+                            // TODO: Temporarily fix for AME
+                            isXmlSerializer = false;
+
                             //we serialize the body of the request
                             //get the known types from the interface type
                             IEnumerable<Type> knownTypes =
