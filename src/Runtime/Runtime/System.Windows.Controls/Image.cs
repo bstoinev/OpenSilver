@@ -213,7 +213,7 @@ namespace Windows.UI.Xaml.Controls
 #endif
             {
                 // Hack to improve the Simulator performance by making only one interop call rather than two:
-                string concatenated = Convert.ToString(CSHTML5.Interop.ExecuteJavaScript("$0.naturalWidth + '|' + $0.naturalHeight", _imageDiv));
+                string concatenated = Convert.ToString(CSHTML5.Interop.ExecuteJavaScript("$0.clientWidth + '|' + $0.clientHeight", _imageDiv));
                 int sepIndex = concatenated.IndexOf('|');
                 string imgWidthAsString = concatenated.Substring(0, sepIndex);
                 string imgHeightAsString = concatenated.Substring(sepIndex + 1);

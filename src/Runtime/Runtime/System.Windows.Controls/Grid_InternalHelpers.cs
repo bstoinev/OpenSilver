@@ -21,6 +21,7 @@ using System.Collections.Specialized;
 using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 #if MIGRATION
@@ -53,10 +54,20 @@ namespace Windows.UI.Xaml.Controls
 #endif
         internal static bool isMSGrid()
         {
-            if (!_isMSGrid.HasValue)
+            while (!_isMSGrid.HasValue)
             {
-                _isMSGrid = (bool)((CSHTML5.Types.INTERNAL_JSObjectReference)(CSHTML5.Interop.ExecuteJavaScript("document.isMSGrid"))).Value;
+                var jsResult = CSHTML5.Interop.ExecuteJavaScript("document.isMSGrid");
+
+                if (bool.TryParse(jsResult.ToString(), out var result))
+                {
+                    _isMSGrid = result;
+                }
+                else
+                {
+                    Thread.Sleep(100);
+                }
             }
+
             return _isMSGrid.Value;
         }
 
