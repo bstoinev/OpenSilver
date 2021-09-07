@@ -31,11 +31,8 @@ namespace System.Windows.Browser
         /// returned collection is empty.
         /// </returns>
 		[OpenSilver.NotImplemented]
-        public ScriptObjectCollection Children
-        {
-            get => new ScriptObjectCollection();
-        }
-   
+        public ScriptObjectCollection Children { get; } = new ScriptObjectCollection();
+
         /// <summary>
         /// Gets the identifier of the current HTML element.
         /// </summary>
@@ -49,7 +46,7 @@ namespace System.Windows.Browser
         /// <exception cref="ArgumentNullException">
         /// The property is set to null.
         /// </exception>
-		[OpenSilver.NotImplemented]
+        [OpenSilver.NotImplemented]
         public string Id { get; set; }
 
         /// <summary>
