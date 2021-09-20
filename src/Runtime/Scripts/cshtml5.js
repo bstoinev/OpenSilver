@@ -296,7 +296,7 @@ document.addEventListenerSafe = function (element, method, func) {
         element = document.getElementById(element);
     }
 	if (element){
-		element.addEventListener(method, func);
+        element.addEventListener(method, func, { passive: true });
 	}
 }
 
