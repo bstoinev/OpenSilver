@@ -2316,11 +2316,7 @@ namespace Windows.UI.Xaml
             }
             else
             {
-#if OPENSILVER
-                Console.WriteLine(string.Format("The following routed event cannot be used in the AddHandler method: {0} - Please contact support.", routedEvent));
-#else
                 throw new NotSupportedException(string.Format("The following routed event cannot be used in the AddHandler method: {0} - Please contact support.", routedEvent));
-#endif
             }
         }
 
