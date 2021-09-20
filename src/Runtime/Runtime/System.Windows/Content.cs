@@ -1,6 +1,4 @@
-﻿
-
-/*===================================================================================
+﻿/*===================================================================================
 * 
 *   Copyright (c) Userware/OpenSilver.net
 *      
@@ -12,8 +10,6 @@
 *  
 \*====================================================================================*/
 
-using CSHTML5;
-using System;
 
 #if MIGRATION
 namespace System.Windows.Interop
@@ -160,7 +156,7 @@ if (requestMethod) {
         //
         // Returns:
         //     A value that indicates the behavior of full-screen mode.
-        //public FullScreenOptions FullScreenOptions { get; set; }
+        public FullScreenOptions FullScreenOptions { get; set; }
 
         /// <summary>
         /// Occurs when the zoom setting in the host browser window changes or is initialized.

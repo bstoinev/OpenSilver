@@ -1,19 +1,13 @@
-﻿using System;
-
-#if MIGRATION
-#if WORKINPROGRESS
+﻿#if MIGRATION
 namespace System.Windows.Interop
-#else
-namespace System.Windows // Note: we didn't use the "Interop" namespace to avoid conflicts with CSHTML5.Interop
-#endif
 #else
 namespace Windows.UI.Xaml // Note: we didn't use the "Interop" namespace to avoid conflicts with CSHTML5.Interop
 #endif
 {
-	/// <summary>
-	/// Defines constants that indicate the behavior of full-screen mode. 
-	/// </summary>
-	[Flags]
+    /// <summary>
+    /// Defines constants that indicate the behavior of full-screen mode. 
+    /// </summary>
+    [Flags]
 	public enum FullScreenOptions
 	{
 		/// <summary>
