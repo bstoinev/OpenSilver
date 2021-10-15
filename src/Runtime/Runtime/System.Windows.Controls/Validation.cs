@@ -112,7 +112,14 @@ namespace Windows.UI.Xaml.Controls
                 "HasError",
                 typeof(bool),
                 typeof(Validation),
-                new PropertyMetadata(false));
+                new PropertyMetadata(false, new PropertyChangedCallback(OnHasErrorChanged)));
+
+        private static void OnHasErrorChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            if (!(d is Control control))
+                return;
+            Control.OnVisualStatePropertyChanged((DependencyObject)control, e);
+        }
 
         /// <summary>
         /// Gets the value of the <see cref="Validation"/> HasError attached

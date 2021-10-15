@@ -13,6 +13,8 @@
 
 using System;
 using System.Diagnostics;
+using System.Linq;
+using System.Collections;
 using CSHTML5.Internal;
 using OpenSilver.Internal.Data;
 
@@ -408,7 +410,22 @@ namespace Windows.UI.Xaml.Data
                 }
 
                 node.SetValue(convertedValue);
-                Validation.ClearInvalid(this);
+
+                if (ParentBinding.ValidatesOnDataErrors)
+                {
+                    if (TryGetDataErrorInfoMessage(node, out var error))
+                    {
+                        Validation.MarkInvalid(this, new ValidationError(this) { ErrorContent = error });
+                    }
+                    else
+                    {
+                        Validation.ClearInvalid(this);
+                    }
+                }
+                else
+                {
+                    Validation.ClearInvalid(this);
+                }
             }
             catch (Exception e)
             {
@@ -430,6 +447,24 @@ namespace Windows.UI.Xaml.Data
             {
                 IsUpdating = oldIsUpdating;
             }
+        }
+
+        private bool TryGetDataErrorInfoMessage(IPropertyPathNode node, out string error)
+        {
+            error = null;
+
+            // TODO: Need get property from final node instead
+            var prop = ParentBinding.Path.Path.Split('.').LastOrDefault();
+
+            if (node is StandardPropertyPathNode standardNode)
+            {
+                if (standardNode.Source is ComponentModel.IDataErrorInfo dataErrorInfo)
+                {
+                    error = dataErrorInfo[prop];
+                }
+            }
+
+            return !string.IsNullOrEmpty(error);
         }
 
         /// <summary>
