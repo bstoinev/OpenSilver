@@ -112,7 +112,14 @@ namespace Windows.UI.Xaml.Controls
                 "HasError",
                 typeof(bool),
                 typeof(Validation),
-                new PropertyMetadata(false));
+                new PropertyMetadata(false, new PropertyChangedCallback(OnHasErrorChanged)));
+
+        private static void OnHasErrorChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            if (!(d is Control control))
+                return;
+            Control.OnVisualStatePropertyChanged((DependencyObject)control, e);
+        }
 
         /// <summary>
         /// Gets the value of the <see cref="Validation"/> HasError attached
@@ -266,7 +273,12 @@ namespace Windows.UI.Xaml.Controls
                     }
                 }
 
-                RefreshPopup(target, validationErrors);
+                // TODO: ValidatesOnDataErrors check here just for client_AB
+                //       should have a better flag to show this popup or used customized by VisualState
+                if (!bindingExpression.ParentBinding.ValidatesOnDataErrors)
+                {
+                    RefreshPopup(target, validationErrors);
+                }
             }
 
         }

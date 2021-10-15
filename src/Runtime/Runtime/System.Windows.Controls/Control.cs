@@ -985,6 +985,18 @@ void Control_PointerReleased(object sender, Input.PointerRoutedEventArgs e)
             }
         }
 
+        internal void ChangeValidationVisualState()
+        {
+            if (Validation.GetHasError(this))
+            {
+                VisualStateManager.GoToState(this, _isFocused ? "InvalidFocused" : "InvalidUnfocused", true);
+            }
+            else
+            {
+                VisualStateManager.GoToState(this, "Valid", true);
+            }
+        }
+
         public override object CreateDomElement(object parentRef, out object domElementWhereToPlaceChildren)
         {
 #if !BRIDGE
@@ -1150,5 +1162,13 @@ void Control_PointerReleased(object sender, Input.PointerRoutedEventArgs e)
             return extent;
         }
 
+        internal static void OnVisualStatePropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            if (!(d is Control control))
+                return;
+
+            // It should call ChangeVisualStates() and handle validation visual state there but seem like mixup with keyboard visual state
+            control.ChangeValidationVisualState();
+        }
     }
 }
