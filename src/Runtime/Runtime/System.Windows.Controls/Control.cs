@@ -810,6 +810,8 @@ namespace Windows.UI.Xaml.Controls
                 // Go to the default state ("Normal" visual state):
                 UpdateVisualStates();
 
+                ChangeValidationVisualState();
+
                 bool hasMouseOverState = false;
                 bool hasPressedState = false;
                 bool hasFocusedState = false;

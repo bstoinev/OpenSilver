@@ -145,7 +145,14 @@ namespace Windows.UI.Xaml.Data
                 }
                 else
                 {
-                    value = UseFallbackValue();
+                    if (this.ParentBinding.Path.Path.Equals("(Validation.Errors)[0].ErrorContent", StringComparison.OrdinalIgnoreCase) && this._bindingSource is FrameworkElement sourceFE)
+                    {
+                        value = Validation.GetErrors(sourceFE)?.FirstOrDefault()?.ErrorContent;
+                    }
+                    else
+                    {
+                        value = UseFallbackValue();
+                    }
                 }
             }
             else
@@ -411,9 +418,9 @@ namespace Windows.UI.Xaml.Data
 
                 node.SetValue(convertedValue);
 
-                if (ParentBinding.ValidatesOnDataErrors)
+                if (ParentBinding.ValidatesOnDataErrors && node is StandardPropertyPathNode standardNode)
                 {
-                    if (TryGetDataErrorInfoMessage(node, out var error))
+                    if (TryGetDataErrorInfoMessage(standardNode.Source, out var error))
                     {
                         Validation.MarkInvalid(this, new ValidationError(this) { ErrorContent = error });
                     }
@@ -449,19 +456,15 @@ namespace Windows.UI.Xaml.Data
             }
         }
 
-        private bool TryGetDataErrorInfoMessage(IPropertyPathNode node, out string error)
+        private bool TryGetDataErrorInfoMessage(object source, out string error)
         {
             error = null;
 
-            // TODO: Need get property from final node instead
-            var prop = ParentBinding.Path.Path.Split('.').LastOrDefault();
-
-            if (node is StandardPropertyPathNode standardNode)
+            if (source is ComponentModel.IDataErrorInfo dataErrorInfo)
             {
-                if (standardNode.Source is ComponentModel.IDataErrorInfo dataErrorInfo)
-                {
-                    error = dataErrorInfo[prop];
-                }
+                // TODO: Need get property from final node instead
+                var prop = ParentBinding.Path.Path.Split('.').LastOrDefault();
+                error = dataErrorInfo[prop];
             }
 
             return !string.IsNullOrEmpty(error);
@@ -739,6 +742,18 @@ namespace Windows.UI.Xaml.Data
                 Target.ApplyExpression(TargetProperty, this, ParentBinding._isInStyle);
 
                 IsUpdating = oldIsUpdating;
+
+                if (ParentBinding.ValidatesOnDataErrors && _bindingSource is FrameworkElement sourceFE)
+                {
+                    if (TryGetDataErrorInfoMessage(sourceFE.DataContext, out var error))
+                    {
+                        Validation.MarkInvalid(this, new ValidationError(this) { ErrorContent = error });
+                    }
+                    else
+                    {
+                        Validation.ClearInvalid(this);
+                    }
+                }
             }
         }
     }
