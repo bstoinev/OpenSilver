@@ -162,7 +162,6 @@ if (requestMethod) {
         /// <summary>
         /// Gets or sets a value that indicates the behavior of full-screen mode.
         /// </summary>
-        [OpenSilver.NotImplemented]
         public FullScreenOptions FullScreenOptions { get; set; }
 
         /// <summary>
