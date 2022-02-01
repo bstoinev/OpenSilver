@@ -6,19 +6,6 @@ namespace DotNetForHtml5.Compiler
     [Serializable]
     public class XamlParseException : SystemException
     {
-        protected XamlParseException(SerializationInfo info, StreamingContext context) : base(info, context)
-        {
-            LineNumber = info.GetInt32("Line");
-            LinePosition = info.GetInt32("Position");
-        }
-
-        public override void GetObjectData(SerializationInfo info, StreamingContext context)
-        {
-            base.GetObjectData(info, context);
-            info.AddValue("Line", (int)LineNumber);
-            info.AddValue("Position", (int)LinePosition);
-        }
-
         ///<summary>
         /// Constructor
         ///</summary>
