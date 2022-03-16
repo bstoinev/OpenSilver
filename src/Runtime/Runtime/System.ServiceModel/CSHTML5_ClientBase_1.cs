@@ -1231,6 +1231,9 @@ namespace System.ServiceModel
                         object requestBody = requestParameters[parameterInfos[i].Name];
                         if (requestBody != null)
                         {
+                            // TODO: Temporarily fix for AME
+                            isXmlSerializer = false;
+
                             var types = new List<Type>(knownTypes ?? Enumerable.Empty<Type>());
                             types.AddRange(
                                 interfaceType.GetCustomAttributes(typeof(ServiceKnownTypeAttribute), true)
